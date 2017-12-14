@@ -9,7 +9,8 @@
     ],
     "linebreak-style": [
       "error",
-      "unix"
-    ]
+      "windows"
+    ],
+    "indent": ["error", 4]
   }
 }

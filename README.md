@@ -1,30 +1,25 @@
 JavaScript Expression Evaluator
 ===============================
 
-[![npm](https://img.shields.io/npm/v/expr-eval.svg)](https://www.npmjs.com/package/expr-eval)
-[![CDNJS version](https://img.shields.io/cdnjs/v/expr-eval.svg)](https://cdnjs.com/libraries/expr-eval)
-[![Build Status](https://travis-ci.org/silentmatt/expr-eval.svg?branch=master)](https://travis-ci.org/silentmatt/expr-eval)
+This is a modified version of https://github.com/silentmatt/expr-eval
+这是基于Matthew Crumley的expr-eval修改而成。
 
 Description
 -------------------------------------
 
-Parses and evaluates mathematical expressions. It's a safer and more
-math-oriented alternative to using JavaScript’s `eval` function for mathematical
-expressions.
+处理数学表达式和有限的字符串、日期
 
-It has built-in support for common math operators and functions. Additionally,
-you can add your own JavaScript functions. Expressions can be evaluated
-directly, or compiled into native JavaScript functions.
+支持的运算符、函数见后表
 
 Installation
 -------------------------------------
 
-    npm install expr-eval
+    npm install nb-expr-eval
 
 Basic Usage
 -------------------------------------
 
-    var Parser = require('expr-eval').Parser;
+    var Parser = require('nb-expr-eval').Parser;
 
     var parser = new Parser();
     var expr = parser.parse('2 * x + 1');
@@ -282,6 +277,11 @@ pow(x, y)    | Equivalent to x^y. For consistency with JavaScript's Math object.
 atan2(y, x)  | Arc tangent of x/y. i.e. the angle between (0, 0) and (x, y) in radians.
 if(c, a, b)  | Function form of c ? a : b
 roundTo(x, n)  | Rounds x to n places after the decimal point.
+month(date)  | 获取date的月份 
+year(date)  | 获取date的年份
+now(format)  | 获取现在的时间并以format格式输出，不填format则以ISO 8601格式输出
+substr(str, start, length)  | 获取字符串str中从start开始持续length个字符，如果不填length则获取从start开始到字符串结尾
+datediff(date1, date2, unit)  | 返回date1到date2之间的时间差，unit可选范围：years, months, weeks, days, hours, minutes, and seconds.
 
 ### Tests ###
 
