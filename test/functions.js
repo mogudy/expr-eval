@@ -116,10 +116,10 @@ describe('Functions', function () {
             assert.strictEqual(parser.evaluate('now("YYYYYMMDD HH:mm:ss")'), moment().format('YYYYYMMDD HH:mm:ss'));
         });
     });
-    describe('datediff(val1, val2, unit)', function () {
+    describe('null value', function () {
         it('should return date diff for specified dates', function () {
             var parser = new Parser();
-            assert.strictEqual(parser.evaluate('datediff("20171214","19851214","years")'), 32);
+            assert.strictEqual(parser.parse('x*y').simplify({x: 1, y: null}).variables().length, 1);
         });
     });
 
