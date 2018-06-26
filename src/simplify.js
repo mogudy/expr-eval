@@ -10,7 +10,7 @@ export default function simplify(tokens, unaryOps, binaryOps, ternaryOps, values
         var type = item.type;
         if (type === INUMBER) {
             nstack.push(item);
-        } else if (type === IVAR && values.hasOwnProperty(item.value) && values[item.value] != null) {
+        } else if (type === IVAR && values.hasOwnProperty(item.value) && values[item.value] !== null && values[item.value] !== undefined) {
             item = new Instruction(INUMBER, values[item.value]);
             nstack.push(item);
         } else if (type === IOP2 && nstack.length > 1) {

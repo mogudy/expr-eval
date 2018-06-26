@@ -6,6 +6,15 @@ var assert = require('assert');
 var Parser = require('../dist/bundle').Parser;
 var moment = require('moment');
 
+// var po = new Parser({
+//     operators: {
+//         'in': true
+//     }
+// });
+// var pp = po.parse('y in 2');
+// var pq = pp.simplify({y: 1});
+// console.log(pp.variables());
+
 describe('Functions', function () {
     describe('roundTo()', function () {
         // Simple cases
@@ -116,10 +125,17 @@ describe('Functions', function () {
             assert.strictEqual(parser.evaluate('now("YYYYYMMDD HH:mm:ss")'), moment().format('YYYYYMMDD HH:mm:ss'));
         });
     });
-    describe('null value', function () {
-        it('should return date diff for specified dates', function () {
+    describe('dateform("2016-01-01T15:00:00",format)', function () {
+        it('should return date as given format', function () {
             var parser = new Parser();
-            assert.strictEqual(parser.parse('x*y').simplify({x: 1, y: null}).variables().length, 1);
+            assert.strictEqual(parser.evaluate('dateform("2016-01-01T15:00:00","YYYYMMDD")'), '20160101');
+        });
+    });
+    describe('null value', function () {
+        it('should not simplify variable', function () {
+            var parser = new Parser();
+            // var expr = parser.parse('y in ( 2, 4 )').simplify({y: null});
+            assert.strictEqual(parser.parse('x * y').simplify({y: null}).variables().length, 2);
         });
     });
 

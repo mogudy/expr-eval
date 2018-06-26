@@ -124,6 +124,9 @@ export function year(date) {
 export function month(date) {
     return moment(date).month();
 }
+export function dateform(date,format) {
+    return moment(date).format(format);
+}
 
 export function substr(str, start, length) {
     return ('' + str).substr(start, length);
