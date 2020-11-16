@@ -14,12 +14,12 @@ Description
 安装
 -------------------------------------
 
-    npm install nb-expr-eval
+    npm install @nbxx/nb-expr-eval
 
 基本用法
 -------------------------------------
 ```js
-    var Parser = require('nb-expr-eval').Parser;
+    var Parser = require('@nbxx/nb-expr-eval').Parser;
 
     var parser = new Parser();
     var expr = parser.parse('2 * x + 1');
