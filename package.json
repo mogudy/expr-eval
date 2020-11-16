@@ -1,37 +1,39 @@
 {
   "name": "@nbxx/nb-expr-eval",
-  "version": "1.2.8",
+  "version": "2.0.2001",
   "description": "Mathematical expression evaluator originally created by Matthew Crumley",
   "main": "dist/bundle.js",
+  "module": "dist/index.mjs",
   "typings": "parser.d.ts",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "moment": "^2.19.4"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-semistandard": "^11.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^4.0.1",
-    "rollup": "^0.52.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "eslint": "^6.3.0",
+    "eslint-config-semistandard": "^15.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "moment": "^2.19.4"
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "rollup": "^1.20.3",
+    "rollup-plugin-uglify": "^6.0.3"
   },
   "scripts": {
     "test": "npm run build && mocha",
-    "coverage": "npm run build && istanbul cover _mocha",
+    "coverage": "npm run build && nyc --reporter=lcov --reporter=text-summary mocha",
     "lint": "eslint index.js src test rollup.config.js rollup-min.config.js",
-    "build": "rollup -c rollup.config.js && rollup -c rollup-min.config.js",
+    "watch": "rollup -c rollup.config.js -w",
+    "build": "rollup -c rollup.config.js && rollup -c rollup-min.config.js && rollup -c rollup-esm.config.js",
     "prepublish": "npm run build"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "parser.d.ts"
   ],
   "repository": {
     "type": "git",
